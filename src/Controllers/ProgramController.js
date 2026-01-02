@@ -24,6 +24,10 @@ export class ProgramController {
     console.log();
   }
 
+  printProgramEnd() {
+    Console.print(OUTPUT_MESSAGES.PROGRAM_END);
+  }
+
   printHeader() {
     const headerCols = [
       '구분',

@@ -10,6 +10,7 @@ class App {
       programController.createCategories();
       programController.saveMenusPerCoach();
       programController.printProgramResult();
+      programController.printProgramEnd();
     } catch (error) {
       console.error(error);
     }
