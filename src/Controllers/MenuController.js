@@ -6,7 +6,7 @@ export class MenuController {
     const categories = [];
     while (categories.length < 5) {
       // 1. 난수 뽑기
-      const category = Random.pickNumberInRange(1, 5);
+      const category = Random.pickNumberInRange(0, 4);
 
       // 2. 뽑은 난수의 숫자가 기존 배열에 몇 개 있는지 구하기
       const count = categories.filter((n) => n === category);
