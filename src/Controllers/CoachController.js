@@ -1,4 +1,5 @@
 import { CoachService } from '../Services/CoachService.js';
+import { InputView } from '../View/InputView.js';
 
 export class CoachController {
   #coachService;
@@ -7,7 +8,7 @@ export class CoachController {
   }
   async getCoachNames() {
     // 1. 코치 이름 입력받기
-    const originCoachNames = await this.#coachService.getOriginCoachNames();
+    const originCoachNames = await InputView.getOriginCoachNames();
 
     // 2. 코치 이름 분리하기
     const coachNames =

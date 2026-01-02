@@ -1,12 +1,4 @@
-import { Console } from '@woowacourse/mission-utils';
-import { INPUT_MESSAGES } from '../constants/io.js';
-
 export class CoachService {
-  // 사용자로부터 코치 이름 입력 받기
-  getOriginCoachNames() {
-    return Console.readLineAsync(INPUT_MESSAGES.COACH_NAMES + '\n');
-  }
-
   // 원본 이름을 배열로 분리하기
   parseOriginCoachNames(originCoachNames) {
     const coachNames = originCoachNames.split(',').map((n) => n.trim());
