@@ -7,9 +7,9 @@ export class ProgramController {
     Console.print(OUTPUT_MESSAGES.PROGRAM_START);
   }
 
-  getCoachNames() {
+  async getCoachNames() {
     const coachContoller = new CoachController();
-    const coachNames = coachContoller.getCoachNames();
+    const coachNames = await coachContoller.getCoachNames();
     const coachList = coachContoller.createCoachList(coachNames);
   }
 }

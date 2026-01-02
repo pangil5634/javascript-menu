@@ -1,4 +1,4 @@
-import { ERROR_MESSAGES } from '../constants/errors';
+import { ERROR_MESSAGES } from '../constants/errors.js';
 
 export class CoachService {
   // 원본 이름을 배열로 분리하기
