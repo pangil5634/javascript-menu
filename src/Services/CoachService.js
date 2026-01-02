@@ -37,7 +37,10 @@ export class CoachService {
   }
 
   parseOriginHateMenus(originHateMenus) {
-    const hateMenus = originHateMenus.split(',').map((n) => n.trim());
+    const hateMenus = originHateMenus
+      .split(',')
+      .map((n) => n.trim())
+      .filter((n) => n !== '');
     return hateMenus;
   }
 
