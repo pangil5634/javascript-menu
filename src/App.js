@@ -4,13 +4,14 @@ class App {
   async run() {
     const programController = new ProgramController();
     try {
-      programController.printProgramStart();
-      await programController.createCoach();
-      await programController.saveHateMenus();
-      programController.createCategories();
-      programController.saveMenusPerCoach();
-      programController.printProgramResult();
-      programController.printProgramEnd();
+      // 코치 정보 생성
+      await programController.playCoach();
+
+      // 카테고리 생성
+      programController.playCategory();
+
+      // 메뉴 결과 출력
+      programController.playResult();
     } catch (error) {
       console.error(error);
     }

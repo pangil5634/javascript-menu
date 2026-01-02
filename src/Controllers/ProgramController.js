@@ -1,67 +1,39 @@
-import { Console } from '@woowacourse/mission-utils';
-import { OUTPUT_MESSAGES } from '../constants/io.js';
 import { CoachController } from './CoachController.js';
 import { MenuController } from './MenuController.js';
+import { ProgramService } from '../Services/ProgramService.js';
 
 export class ProgramController {
   #coachList = [];
   #categories;
   #coachController;
   #menuController;
+  #programService;
   constructor() {
     this.#coachController = new CoachController();
     this.#menuController = new MenuController();
-  }
-  printProgramStart() {
-    Console.print(OUTPUT_MESSAGES.PROGRAM_START);
+    this.#programService = new ProgramService();
   }
 
-  printProgramResult() {
-    Console.print(OUTPUT_MESSAGES.PROGRAM_RESULT);
-    this.printHeader();
-    this.printCategories();
-    this.printCoachRows();
-    console.log();
+  // main1
+  async playCoach() {
+    this.#programService.printProgramStart();
+    await this.createCoach();
+    await this.saveHateMenus();
   }
 
-  printProgramEnd() {
-    Console.print(OUTPUT_MESSAGES.PROGRAM_END);
+  // main2
+  playCategory() {
+    this.createCategories();
+    this.saveMenusPerCoach();
   }
 
-  printHeader() {
-    const headerCols = [
-      '구분',
-      '월요일',
-      '화요일',
-      '수요일',
-      '목요일',
-      '금요일',
-    ];
-    this.printRow(headerCols);
+  // main3
+  playResult() {
+    this.#programService.printProgramResult(this.#categories, this.#coachList);
+    this.#programService.printProgramEnd();
   }
 
-  printCategories() {
-    const categoriesCols = ['카테고리'];
-    const CATEGORY = ['일식', '한식', '중식', '아시안', '양식'];
-    for (const categoryIndex of this.#categories) {
-      categoriesCols.push(CATEGORY[categoryIndex]);
-    }
-    this.printRow(categoriesCols);
-  }
-
-  printCoachRows() {
-    for (const coach of this.#coachList) {
-      const coachMenuRow = [coach.name, ...coach.selectMenus];
-      this.printRow(coachMenuRow);
-    }
-  }
-
-  printRow(cols) {
-    Console.print(
-      `[ ${cols[0]} | ${cols[1]} | ${cols[2]} | ${cols[3]} | ${cols[4]} | ${cols[5]} ]`,
-    );
-  }
-
+  // other functions
   async createCoach() {
     const coachNames = await this.#coachController.getCoachNames();
     this.#coachList = this.#coachController.createCoachList(coachNames);
