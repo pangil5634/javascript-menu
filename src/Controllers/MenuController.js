@@ -23,24 +23,25 @@ export class MenuController {
 
   createMenuList(hateMenus, categories) {
     const menuList = [];
+    const usedMenus = new Set();
 
     for (const category of categories) {
-      let selectMenu = '';
-
       // 1. 카테고리의 메뉴 불러오기
       const menus = MENU[category];
 
       // 2. 해당 카테고리의 개수 구하기
       const menuIndexList = Array.from({ length: menus.length }, (_, i) => i);
 
+      let selectMenu = '';
       do {
         // 3. 셔플해서 숫자 하나 뽑기
         const menuIndex = Random.shuffle(menuIndexList)[0];
         // 4. 해당 메뉴가 못 먹는 메뉴에 있는지 확인하기
         selectMenu = menus[menuIndex];
-      } while (hateMenus.some((n) => n === selectMenu));
+      } while (hateMenus.includes(selectMenu) || usedMenus.has(selectMenu));
 
       // 5. 메뉴 추가하기
+      usedMenus.add(selectMenu);
       menuList.push(selectMenu);
     }
 
