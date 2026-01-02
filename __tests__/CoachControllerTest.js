@@ -24,7 +24,7 @@ describe("ProgramController Test", () => {
 
     const coachController = new CoachController();
     const result = await coachController.getHateMenus();
-    expect(result).toEqual([""]);
+    expect(result).toEqual([]);
   })
 
   test("메뉴 입력 정상 테스트 - 2", async () => {

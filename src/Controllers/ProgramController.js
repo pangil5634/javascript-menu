@@ -28,8 +28,19 @@ export class ProgramController {
     }
   }
 
-  async createCategories() {
+  createCategories() {
     const categories = this.#menuController.createCategoryList();
     this.#categories = categories;
+  }
+
+  saveMenusPerCoach() {
+    for (const coach of this.#coachList) {
+      const menuList = this.#menuController.createMenuList(
+        coach.hateMenus,
+        this.#categories,
+      );
+
+      coach.selectMenus = menuList;
+    }
   }
 }
