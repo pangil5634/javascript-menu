@@ -10,5 +10,6 @@ export class ProgramController {
   getCoachNames() {
     const coachContoller = new CoachController();
     const coachNames = coachContoller.getCoachNames();
+    const coachList = coachContoller.createCoachList(coachNames);
   }
 }

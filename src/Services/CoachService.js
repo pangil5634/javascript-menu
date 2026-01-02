@@ -12,7 +12,7 @@ export class CoachService {
     this.validateCoachNamesLength(coachNames);
 
     for (const name of coachNames) {
-      validateCoachNameLength(name);
+      this.validateCoachNameLength(name);
     }
   }
 

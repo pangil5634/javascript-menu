@@ -1,3 +1,4 @@
+import { Coach } from '../Models/Coach.js';
 import { CoachService } from '../Services/CoachService.js';
 import { InputView } from '../View/InputView.js';
 
@@ -19,5 +20,10 @@ export class CoachController {
 
     // 4. 코치 이름 반환하기
     return coachNames;
+  }
+
+  createCoachList(coachNames) {
+    const coachList = coachNames.map((name) => new Coach(name));
+    return coachList;
   }
 }
