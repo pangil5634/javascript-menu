@@ -7,6 +7,7 @@ class App {
       programController.printProgramStart();
       await programController.createCoach();
       await programController.saveHateMenus();
+      programController.createCategories();
     } catch (error) {
       console.error(error);
     }
