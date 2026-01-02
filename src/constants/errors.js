@@ -5,4 +5,6 @@ export const ERROR_MESSAGES = {
 
   SHORT_NAME: '최소 2글자 이상 길이의 이름을 입력해야 합니다.',
   LONG_NAME: '최대 4글자 이하 길이의 이름을 입력해야 합니다.',
+
+  MANY_MENUS: '최대 2개의 메뉴만 입력해야 합니다',
 };

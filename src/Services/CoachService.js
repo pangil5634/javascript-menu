@@ -35,4 +35,15 @@ export class CoachService {
       throw new Error(ERROR_MESSAGES.LONG_NAME);
     }
   }
+
+  parseOriginHateMenus(originHateMenus) {
+    const hateMenus = originHateMenus.split(',').map((n) => n.trim());
+    return hateMenus;
+  }
+
+  validateHateMenus(hateMenus) {
+    if (hateMenus.length > 2) {
+      throw new Error(ERROR_MESSAGES.MANY_MENUS);
+    }
+  }
 }

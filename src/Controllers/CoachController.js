@@ -10,6 +10,7 @@ export class CoachController {
   async getCoachNames() {
     // 1. 코치 이름 입력받기
     const originCoachNames = await InputView.getOriginCoachNames();
+    console.log('');
 
     // 2. 코치 이름 분리하기
     const coachNames =
@@ -25,5 +26,20 @@ export class CoachController {
   createCoachList(coachNames) {
     const coachList = coachNames.map((name) => new Coach(name));
     return coachList;
+  }
+
+  async getHateMenus(name) {
+    // 1. 못 먹는 메뉴 입력받기
+    const originHateMenus = await InputView.getOriginHateMenus(name);
+    console.log('');
+
+    // 2. 메뉴 분리하기
+    const hateMenus = this.#coachService.parseOriginHateMenus(originHateMenus);
+
+    // 3. 메뉴 검증하기
+    this.#coachService.validateHateMenus(hateMenus);
+
+    // 4. 메뉴 반환하기
+    return hateMenus;
   }
 }

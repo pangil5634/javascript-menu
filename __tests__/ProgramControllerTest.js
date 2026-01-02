@@ -1,3 +1,4 @@
+import { OUTPUT_MESSAGES } from "../src/constants/io";
 import { ProgramController } from "../src/Controllers/ProgramController"
 
 describe("ProgramController Test", () => {
@@ -7,6 +8,6 @@ describe("ProgramController Test", () => {
     console.log = jest.fn(); 
     programController.printProgramStart(); 
     
-    expect(console.log).toHaveBeenCalledWith('점심 메뉴 추천을 시작합니다.');
+    expect(console.log).toHaveBeenCalledWith(OUTPUT_MESSAGES.PROGRAM_START);
   })
 })

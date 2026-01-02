@@ -1,6 +1,7 @@
 jest.mock('../src/View/InputView.js', () => ({
   InputView: {
     getOriginCoachNames: jest.fn(),
+    getOriginHateMenus : jest.fn(),
   },
 }));
 
@@ -10,14 +11,28 @@ import { Coach } from "../src/Models/Coach";
 import { InputView } from '../src/View/InputView';
 
 describe("ProgramController Test", () => {
-  test("코치 이름 정상 테스트 - 1", async () =>
-  {
+  test("코치 이름 정상 테스트 - 1", async () => {
     InputView.getOriginCoachNames.mockResolvedValue('포비,광일');
 
     const coachController = new CoachController();
     const result = await coachController.getCoachNames();
     expect(result).toEqual(['포비', '광일']);
-      
+  })
+
+  test("메뉴 입력 정상 테스트 - 1", async () => {
+    InputView.getOriginHateMenus.mockResolvedValue('');
+
+    const coachController = new CoachController();
+    const result = await coachController.getHateMenus();
+    expect(result).toEqual([""]);
+  })
+
+  test("메뉴 입력 정상 테스트 - 2", async () => {
+    InputView.getOriginHateMenus.mockResolvedValue('치킨,피자');
+
+    const coachController = new CoachController();
+    const result = await coachController.getHateMenus();
+    expect(result).toEqual(['치킨', '피자']);
   })
 })
 
